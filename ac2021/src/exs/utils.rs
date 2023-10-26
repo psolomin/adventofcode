@@ -22,6 +22,15 @@ macro_rules! hashmap {
     }}
 }
 
+#[macro_export]
+macro_rules! hashset {
+    ($( $val: expr ),*) => {{
+         let mut s = ::std::collections::HashSet::new();
+         $( s.insert($val); )*
+         s
+    }}
+}
+
 pub fn read_lines_as_vector<T>(file_path: &str) -> Vec<T>
     where T: FromStr, <T as FromStr>::Err: std::fmt::Debug
 {
